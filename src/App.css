@@ -4,15 +4,21 @@
   padding: 0;
   box-sizing: border-box;
   width: 100%;
+  background-color: whitesmoke;
 }
 
 nav{
   display: flex;
+  width: 100%;
   justify-content: space-around;
   align-items: center;
   height: 100px;
+  max-width: 1000px;
+  margin: auto;
   border-bottom: 2px solid rgb(74, 74, 143); 
   background-color: whitesmoke;
+  border-radius: 20px;
+  margin-top: 20px;
 }
 
 .blog-title{
@@ -30,5 +36,35 @@ nav{
   font-family: 'Acme', sans-serif;
   font-size: 20px;
   color:rgb(74, 74, 143)
+}
+
+form{
+  width: 100%;
+  padding: 20px;
+  max-width: 700px;
+  margin:  20px auto;
+  background-color: whitesmoke;
+}
+
+label{
+  font-family: 'Acme', sans-serif;
+  font-size: large;
+  color:rgb(74, 74, 143)
+}
+
+.field{
+  margin: 20px 0;
+}
+
+.field input[type=text]{
+  border: 2px solid rgb(74, 74, 143);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.body input[type=text]{
+  border: 2px solid rgb(74, 74, 143);
+  padding: 60px;
+  border-radius: 5px;
 }
 
