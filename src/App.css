@@ -49,7 +49,7 @@ form{
 label{
   font-family: 'Acme', sans-serif;
   font-size: large;
-  color:rgb(74, 74, 143)
+  color:rgb(74, 74, 143);
 }
 
 .field{
@@ -66,5 +66,16 @@ label{
   border: 2px solid rgb(74, 74, 143);
   padding: 60px;
   border-radius: 5px;
+}
+
+.blog-content{
+  border-bottom: 2px solid rgb(74, 74, 143);
+  width: 100%;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 10px;
+  font-family: 'Acme', sans-serif;
+  color:rgb(74, 74, 143)
+
 }
 

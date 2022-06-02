@@ -1,4 +1,4 @@
-export const BlogData = [
+export const BlogPosts = [
   {
     id:1,
     author:"Nim",
