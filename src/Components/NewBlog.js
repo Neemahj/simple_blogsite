@@ -18,7 +18,7 @@ const CreatePost = () =>{
           <input type="text" id="body"/>
         </label>
       </div>
-      <button>Submit</button>
+      <button className="submit-post">Submit</button>
     </form>
   )
 };
