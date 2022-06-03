@@ -7,10 +7,10 @@ const BlogPage = () => {
       {BlogPosts.map((blogPost) =>{
         return(
           <div className="blog-content">
-            <h5>{blogPost.author}</h5>
-            <h2>{blogPost.title}</h2>
-            <p>{blogPost.body}</p>
-            <p>{blogPost.comment}</p>
+            <h5 id="p-author">{blogPost.author}</h5>
+            <h2 id="p-title">{blogPost.title}</h2>
+            <p id="p-body">{blogPost.body}</p>
+            <p id="p-comment">{blogPost.comment}</p>
           </div>
         )
       })}
