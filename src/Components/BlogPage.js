@@ -11,6 +11,8 @@ const BlogPage = () => {
             <h2 id="p-title">{blogPost.title}</h2>
             <p id="p-body">{blogPost.body}</p>
             <p id="p-comment">{blogPost.comment}</p>
+
+            <button className="submit-comment">Comment</button>
           </div>
         )
       })}
