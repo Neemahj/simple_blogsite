@@ -2,9 +2,10 @@ import axios from 'axios';
 import React, { useState } from 'react';
 
 const CreatePost = () =>{
-  const [name, setName] = useState([]);
-  const [title, setTitle] = useState([]);
-  const [content, setContent] = useState([]);
+  const [name, setName] = useState("");
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  console.log(name);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,9 +30,8 @@ const CreatePost = () =>{
         </label>
       </div>
       <div className="body">
-        <label for="body">Body:
-          <input type="text" id="body" onChange={(e)=> setContent(e.target.value)}/>
-        </label>
+        <label for="body">Body:</label>
+        <textarea col="30" rows='10' onChange={(e)=> setContent(e.target.value)}></textarea>
       </div>
       <button  className="submit-post">Submit</button>
     </form>
