@@ -33,7 +33,7 @@ const CreatePost = () =>{
           <input type="text" id="body" onChange={(e)=> setContent(e.target.value)}/>
         </label>
       </div>
-      <button className="submit-post">Submit</button>
+      <button  className="submit-post">Submit</button>
     </form>
   )
 };

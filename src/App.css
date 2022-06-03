@@ -80,9 +80,14 @@ button.submit-post{
   padding: 10px;
   font-size: large;
   font-family: inherit;
-  background-color: rgb(74, 74, 143);
+  background-color: rgb(214, 214, 219);
   border-radius: 5px;
-  color: white;
+  color: rgb(74, 74, 143);
+}
+
+button.submit-post:hover{
+  background-color:rgb(74, 74, 143);
+  color: whitesmoke;
 }
 
 .blog-content{
