@@ -18,11 +18,7 @@ const CreatePost = () =>{
           <input type="text" id="body"/>
         </label>
       </div>
-      <div className="field">
-        <label for="comment">Comment:
-        <input type="text" id="comment"/>
-        </label>
-      </div>
+      <button>Submit</button>
     </form>
   )
 };
