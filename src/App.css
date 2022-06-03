@@ -5,6 +5,7 @@
   box-sizing: border-box;
   width: 100%;
   background-color: whitesmoke;
+  font-family: 'Acme', sans-serif;
 }
 
 nav{
@@ -26,14 +27,14 @@ nav{
   text-align: center;
   margin-right: 300px;
   font-size: x-large;
-  font-family: 'Acme', sans-serif;
+  font-family: inherit;
   color:rgb(74, 74, 143);
 }
 
 .nav-items a{
   text-decoration: none;
   margin-left: 20px; 
-  font-family: 'Acme', sans-serif;
+  font-family: inherit;
   font-size: 20px;
   color:rgb(74, 74, 143)
 }
@@ -47,7 +48,7 @@ form{
 }
 
 label{
-  font-family: 'Acme', sans-serif;
+  font-family: inherit;
   font-size: large;
   color:rgb(74, 74, 143);
 }
@@ -73,7 +74,7 @@ button.submit-post{
   border: 2px solid rgb(74, 74, 143);
   padding: 10px;
   font-size: large;
-  font-family: 'Acme', sans-serif;
+  font-family: inherit;
   background-color: rgb(74, 74, 143);
   border-radius: 5px;
   color: white;
@@ -85,15 +86,24 @@ button.submit-post{
   max-width: 900px;
   margin: 20px auto;
   padding: 10px;
-  font-family: 'Acme', sans-serif;
+  font-family: inherit;
   color:rgb(74, 74, 143);
   border-radius: 15px;
   display: flex;
   flex-direction: column;
 }
 
-#p-author{
+.p-author{
   padding: 2px;
+  font-size: larger;
+}
+
+.p-title{
+  font-size: xx-large;
+}
+
+.p-comment{
+  margin-top: 7px;
   font-size: large;
 }
 
@@ -103,7 +113,7 @@ button.submit-comment{
   max-width: 100px;
   align-self: end;
   font-size: large;
-  font-family: 'Acme', sans-serif;
+  font-family: inherit;
   background-color: rgb(74, 74, 143);
   border-radius: 5px;
   color: white;
