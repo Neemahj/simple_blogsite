@@ -1,24 +1,27 @@
-import React, { useEffect, useState } from 'react'
-import { BlogPosts } from "./Data"
-import axios from 'axios'
-
+import React, { useEffect, useState } from "react";
+import { BlogPosts } from "./Data";
+import axios from "axios";
 
 const BlogPage = () => {
   const [displayBlog, setDisplayBlog] = useState([]);
 
   useEffect(() => {
-    const getPost = async() => {
-      const {data} = await axios.get("https://blogpostapi1.herokuapp.com/");
-      setDisplayBlog(data.data)
-    }
+    const getPost = async () => {
+      try {
+        const { data } = await axios.get("https://blogpostapi1.herokuapp.com/");
+        setDisplayBlog(data.data);
+      } catch (e) {
+        console.log("FETCH ERROR");
+      }
+    };
     getPost();
   }, []);
   console.log(displayBlog);
   return (
     <div>
-      {displayBlog.map((blogPost) =>{
-        return(
-          <div className="blog-content">
+      {displayBlog.map((blogPost) => {
+        return (
+          <div className="blog-content" key={blogPost.id}>
             <p className="p-author">{blogPost.name}</p>
             <p className="p-title">{blogPost.title}</p>
             <p className="p-body">{blogPost.content}</p>
@@ -26,10 +29,10 @@ const BlogPage = () => {
 
             <button className="submit-comment">Comment</button>
           </div>
-        )
+        );
       })}
     </div>
-  )
+  );
 };
 
-export default BlogPage
+export default BlogPage;
