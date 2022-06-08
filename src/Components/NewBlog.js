@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const CreatePost = () => {
   const [post, setPost] = useState({
@@ -8,49 +8,65 @@ const CreatePost = () => {
     content: "",
   });
 
+  const output = (param) => {
+    return ({ target: { value } }) => {
+      setPost((previous) => ({
+        ...previous,
+        [param]: value,
+      }));
+    };
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try{await axios.post("https://blogpostapi1.herokuapp.com/", {
-      name:post.name,
-      title:post.title,
-      content:post.content
-    });
-  }catch(e){
-    console.log("Post Error")
+    try {
+      await axios.post("https://blogpostapi1.herokuapp.com/", {
+        name: post.name,
+        title: post.title,
+        content: post.content,
+      });
+    } catch {
+      console.log("Post Error");
     }
+    setPost({
+      name: "",
+      title: "",
+      content: "",
+    });
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <div className="field">
-        <label for="author">
+        <label>
           Author:
           <input
             type="text"
-            id="author"
+            name="author"
             value={post.name}
-            onChange={(e) => setPost({ ...post, name: e.target.value })}
+            onChange={output("name")}
           />
         </label>
       </div>
       <div className="field">
-        <label for="title">
+        <label>
           Title:
           <input
             type="text"
-            id="title"
+            name="title"
             value={post.title}
-            onChange={(e) => setPost({ ...post, title: e.target.value })}
+            onChange={output("title")}
           />
         </label>
       </div>
       <div className="body">
-        <label for="body">Body:</label>
+        <label>Body:</label>
         <textarea
           col="30"
           rows="10"
+          name="body"
           value={post.content}
-          onChange={(e) => setPost({ ...post, content: e.target.value })}
+          onChange={output("content")}
         ></textarea>
       </div>
       <button className="submit-post">Submit</button>
