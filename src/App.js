@@ -1,5 +1,5 @@
 import Header from "./Components/Header";
-import CreatePost from "./Components/NewBlog";
+import NewBlog from "./Components/NewBlog";
 import "./App.css";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import BlogPage from "./Components/BlogPage";
@@ -11,7 +11,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<BlogPage />} />
-          <Route path="/new-blog" element={<CreatePost />} />
+          <Route path="/new-blog" element={<NewBlog />} />
         </Routes>
       </div>
     </Router>

@@ -139,7 +139,7 @@ button.open-comment{
   display: block;
 }
 
-.in-active{
+.inactive{
   display: none;
 }
 

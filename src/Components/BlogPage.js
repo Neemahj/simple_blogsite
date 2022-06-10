@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { BlogPosts } from "./Data";
 import axios from "axios";
 import Comment from "./Comment";
+import { postApiUrl } from "./NewBlog";
 
 const BlogPage = () => {
   const [displayBlog, setDisplayBlog] = useState([]);
@@ -10,7 +11,7 @@ const BlogPage = () => {
   useEffect(() => {
     const getPost = async () => {
       try {
-        const { data } = await axios.get("https://blogpostapi1.herokuapp.com/");
+        const { data } = await axios.get(postApiUrl);
         setDisplayBlog(data.data);
       } catch {
         console.log("FETCH ERROR");
@@ -41,7 +42,7 @@ const BlogPage = () => {
             </button>
             <div
               className={`${
-                currentPost === blogPost.id ? "active" : "in-active"
+                currentPost === blogPost.id ? "active" : "inactive"
               }`}
             >
               <Comment blogPost={blogPost} />

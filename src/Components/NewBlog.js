@@ -1,14 +1,16 @@
 import axios from "axios";
 import { useState } from "react";
 
-const CreatePost = () => {
+export const postApiUrl = "https://blogpostapi1.herokuapp.com/"
+
+const NewBlog = () => {
   const [post, setPost] = useState({
     name: "",
     title: "",
     content: "",
   });
 
-  const output = (param) => {
+  const handlePost = (param) => {
     return ({ target: { value } }) => {
       setPost((previous) => ({
         ...previous,
@@ -20,7 +22,7 @@ const CreatePost = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://blogpostapi1.herokuapp.com/", {
+      await axios.post(postApiUrl, {
         name: post.name,
         title: post.title,
         content: post.content,
@@ -44,7 +46,8 @@ const CreatePost = () => {
             type="text"
             name="author"
             value={post.name}
-            onChange={output("name")}
+            onChange={handlePost("name")}
+            required
           />
         </label>
       </div>
@@ -55,7 +58,8 @@ const CreatePost = () => {
             type="text"
             name="title"
             value={post.title}
-            onChange={output("title")}
+            onChange={handlePost("title")}
+            required
           />
         </label>
       </div>
@@ -66,7 +70,8 @@ const CreatePost = () => {
           rows="10"
           name="body"
           value={post.content}
-          onChange={output("content")}
+          onChange={handlePost("content")}
+          required
         ></textarea>
       </div>
       <button className="submit-post">Submit</button>
@@ -74,4 +79,4 @@ const CreatePost = () => {
   );
 };
 
-export default CreatePost;
+export default NewBlog;
