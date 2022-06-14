@@ -1,63 +1,57 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-
-const apiUrlComment1 = "https://blogpostapi1.herokuapp.com/comment";
-const apiUrlComment2 = "https://blogpostapi1.herokuapp.com/comment/all_comments/";
-
+import { apiUrl } from "./NewBlog";
 
 const Comment = ({ blogPost }) => {
-  const [displayComment, setDisplayComment] = useState([]);
-  const [comment, setComment] = useState("");
+  const [comments, setComments] = useState([]);
+  const [content, setContent] = useState("");
 
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(apiUrlComment1, {
-        content: comment,
+      await axios.post(`${apiUrl}comment/`, {
+        content,
         post: blogPost.id,
       });
     } catch {
       console.log("Post Error");
     }
-    setComment("")
+    setContent("");
   };
-
 
   useEffect(() => {
     const getComment = async () => {
       try {
         const { data } = await axios.get(
-          apiUrlComment2 + blogPost.id
+          `${apiUrl}comment/all_comments/` + blogPost.id
         );
-        setDisplayComment(data.data);
+        setComments(data.data);
       } catch {
         console.log("FETCH COMMENT ERROR");
       }
     };
     getComment();
-  }, [handleClick]);
+  }, [comments]);
   return (
     <div className="comment-field">
-      {displayComment.map((comment) => {
+      {comments.map((comment) => {
         return (
           <p className="comment-section" key={comment.id}>
             {comment.content}
           </p>
         );
       })}
-      <form>
+      <form onSubmit={handleClick}>
         <textarea
           col="30"
           rows="5"
           placeholder="Add your comment...."
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
           required
         ></textarea>
 
-        <button className="submit-comment" onClick={handleClick}>
-          Submit
-        </button>
+        <button className="submit-comment">Submit</button>
       </form>
     </div>
   );

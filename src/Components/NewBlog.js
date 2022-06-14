@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 
-export const postApiUrl = "https://blogpostapi1.herokuapp.com/"
+export const apiUrl = "https://blogpostapi1.herokuapp.com/";
 
 const NewBlog = () => {
   const [post, setPost] = useState({
@@ -10,23 +10,14 @@ const NewBlog = () => {
     content: "",
   });
 
-  const handlePost = (param) => {
-    return ({ target: { value } }) => {
-      setPost((previous) => ({
-        ...previous,
-        [param]: value,
-      }));
-    };
+  const handleChange= (e) => {
+    setPost(state => ({...state, [e.target.name]: e.target.value}))
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(postApiUrl, {
-        name: post.name,
-        title: post.title,
-        content: post.content,
-      });
+      await axios.post(apiUrl, post);
     } catch {
       console.log("Post Error");
     }
@@ -44,9 +35,9 @@ const NewBlog = () => {
           Author:
           <input
             type="text"
-            name="author"
+            name="name"
             value={post.name}
-            onChange={handlePost("name")}
+            onChange={handleChange}
             required
           />
         </label>
@@ -58,7 +49,7 @@ const NewBlog = () => {
             type="text"
             name="title"
             value={post.title}
-            onChange={handlePost("title")}
+            onChange={handleChange}
             required
           />
         </label>
@@ -68,9 +59,9 @@ const NewBlog = () => {
         <textarea
           col="30"
           rows="10"
-          name="body"
+          name="content"
           value={post.content}
-          onChange={handlePost("content")}
+          onChange={handleChange}
           required
         ></textarea>
       </div>

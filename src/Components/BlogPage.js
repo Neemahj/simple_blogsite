@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { BlogPosts } from "./Data";
 import axios from "axios";
 import Comment from "./Comment";
-import { postApiUrl } from "./NewBlog";
+import { apiUrl } from "./NewBlog";
 
 const BlogPage = () => {
   const [displayBlog, setDisplayBlog] = useState([]);
@@ -11,7 +10,7 @@ const BlogPage = () => {
   useEffect(() => {
     const getPost = async () => {
       try {
-        const { data } = await axios.get(postApiUrl);
+        const { data } = await axios.get(apiUrl);
         setDisplayBlog(data.data);
       } catch {
         console.log("FETCH ERROR");
