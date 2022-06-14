@@ -1,23 +1,56 @@
-import React from 'react'
-import { BlogPosts } from "./Data"
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Comment from "./Comment";
+import { apiUrl } from "./NewBlog";
 
 const BlogPage = () => {
+  const [displayBlog, setDisplayBlog] = useState([]);
+  const [currentPost, setCurrentPost] = useState("");
+
+  useEffect(() => {
+    const getPost = async () => {
+      try {
+        const { data } = await axios.get(apiUrl);
+        setDisplayBlog(data.data);
+      } catch {
+        console.log("FETCH ERROR");
+      }
+    };
+    getPost();
+  }, []);
+  console.log(displayBlog);
+
+  const handleClick = (id) => {
+    setCurrentPost(id);
+  };
+
   return (
     <div>
-      {BlogPosts.map((blogPost) =>{
-        return(
-          <div className="blog-content">
-            <p className="p-author">{blogPost.author}</p>
+      {displayBlog.map((blogPost) => {
+        return (
+          <div className="blog-content" key={blogPost.id}>
+            <p className="p-author">{blogPost.name}</p>
             <p className="p-title">{blogPost.title}</p>
-            <p className="p-body">{blogPost.body}</p>
-            <p className="p-comment">{blogPost.comment}</p>
+            <p className="p-body">{blogPost.content}</p>
 
-            <button className="submit-comment">Comment</button>
+            <button
+              className="open-comment"
+              onClick={() => handleClick(blogPost.id)}
+            >
+              Comments
+            </button>
+            <div
+              className={`${
+                currentPost === blogPost.id ? "active" : "inactive"
+              }`}
+            >
+              <Comment blogPost={blogPost} />
+            </div>
           </div>
-        )
+        );
       })}
     </div>
-  )
+  );
 };
 
-export default BlogPage
+export default BlogPage;
