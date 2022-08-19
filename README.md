@@ -42,7 +42,7 @@ If you aren't satisfied with the build tool and configuration choices, you can `
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
 ## Project Link
-Live Solution URL: 
+Live Solution URL: https://simple-blogsite-neemahj.vercel.app/
 
 
 ## Contributors/Reviewers
