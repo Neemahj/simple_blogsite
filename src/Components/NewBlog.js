@@ -1,26 +1,73 @@
-import React from 'react';
+import axios from "axios";
+import { useState } from "react";
 
-const CreatePost = () =>{
-  return(
-    <form>
+export const apiUrl = "https://blogpostapi1.herokuapp.com/";
+
+const NewBlog = () => {
+  const [post, setPost] = useState({
+    name: "",
+    title: "",
+    content: "",
+  });
+
+  const handleChange= (e) => {
+    setPost(state => ({...state, [e.target.name]: e.target.value}))
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post(apiUrl, post);
+    } catch {
+      console.log("Post Error");
+    }
+    setPost({
+      name: "",
+      title: "",
+      content: "",
+    });
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
       <div className="field">
-        <label for="author">Author:
-          <input type="text" id="author"/>
+        <label>
+          Author:
+          <input
+            type="text"
+            name="name"
+            value={post.name}
+            onChange={handleChange}
+            required
+          />
         </label>
       </div>
       <div className="field">
-        <label for="title">Title:
-          <input type="text" id="title"/>
+        <label>
+          Title:
+          <input
+            type="text"
+            name="title"
+            value={post.title}
+            onChange={handleChange}
+            required
+          />
         </label>
       </div>
       <div className="body">
-        <label for="body">Body:
-          <input type="text" id="body"/>
-        </label>
+        <label>Body:</label>
+        <textarea
+          col="30"
+          rows="10"
+          name="content"
+          value={post.content}
+          onChange={handleChange}
+          required
+        ></textarea>
       </div>
       <button className="submit-post">Submit</button>
     </form>
-  )
+  );
 };
 
-export default CreatePost;
+export default NewBlog;

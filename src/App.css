@@ -61,12 +61,22 @@ label{
   border: 2px solid rgb(74, 74, 143);
   padding: 10px;
   border-radius: 5px;
+  color: rgb(74, 74, 143)
 }
 
-.body input[type=text]{
+input:focus{
+  outline: none;
+}
+
+.body textarea{
   border: 2px solid rgb(74, 74, 143);
-  padding: 60px;
   border-radius: 5px;
+  resize: none;
+  color: rgb(74, 74, 143);
+}
+
+.body textarea:focus{
+  outline: none;
 }
 
 button.submit-post{
@@ -75,9 +85,14 @@ button.submit-post{
   padding: 10px;
   font-size: large;
   font-family: inherit;
-  background-color: rgb(74, 74, 143);
+  background-color: rgb(214, 214, 219);
   border-radius: 5px;
-  color: white;
+  color: rgb(74, 74, 143);
+}
+
+button.submit-post:hover{
+  background-color:rgb(74, 74, 143);
+  color: whitesmoke;
 }
 
 .blog-content{
@@ -107,7 +122,7 @@ button.submit-post{
   font-size: large;
 }
 
-button.submit-comment{
+button.open-comment{
   padding: 15px;
   width: 100%;
   max-width: 100px;
@@ -120,3 +135,42 @@ button.submit-comment{
   border: 2px solid rgb(74, 74, 143);
 }
 
+.active{
+  display: block;
+}
+
+.inactive{
+  display: none;
+}
+
+.comment-field{
+  /* border: 1px solid red; */
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 20px auto;
+}
+
+.comment-field textarea{
+  border: 2px solid rgb(74, 74, 143) ;
+  border-radius: 5px;
+  resize: none;
+  color: rgb(74, 74, 143);
+  margin: 10px auto;
+}
+
+.comment-field textarea:focus{
+  outline: none;
+}
+
+button.submit-comment{
+  padding: 10px;
+  align-self: end;
+  width: 100%;
+  max-width: 80px;
+  background-color: rgb(74, 74, 143);
+  color: white;
+  border-radius: 5px;
+}
